@@ -25,27 +25,23 @@ class NewVisitorTest(unittest.TestCase):
             'Cuong Phan / Illustrator / Programmer Blog', header_text)
 
         # They notice a suitcase icon next to the header and click on it
-        self.browser.get('http: // localhost: 8000/CV')
+        self.browser.get('http://localhost:8000/login')
 
-        header_text = self.browser.find_element_by_tag_name('h2').text
+        header_text = self.browser.find_element_by_tag_name('h1').text
         self.assertIn(
-            'My CV', header_text)
-
-        # They are redirected to a log-in page with 2 fields and a login button,
-        # they enter but they do not have creditentials and so log-in fails
+            'Cuong Phan CV', header_text)
 
         # They return to main page by clicking on the title header
+        self.browser.get('http://localhost:8000')
 
-        # They check out the posts and see a list of blog posts
-
-        # They notice the structure of the post having a published date, a title and a body
-
-        # They click on the first post, and is lead to a detailed page
-
-        # They now click on the CV icon next to the header title, and is redirected to my CV page.
+        # They now click on the CV text under the header title, and is redirected to my CV page.
+        self.browser.get('http://localhost:8000/CV')
+        header_text = self.browser.find_element_by_tag_name('h1').text
+        self.assertIn(
+            'Cuong Phan CV', header_text)
 
         # After reading the contents, they conclude their visit, and exit.
 
-        # assert 'Phan Cuong CV Blog' in browser.title, "Browser title was " + browser.title
+
 if __name__ == '__main__':
     unittest.main(warnings='ignore')

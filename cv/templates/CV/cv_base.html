@@ -1,10 +1,22 @@
-{% extends 'blog/base.html' %} {% block content %} {% for cv in cv_list %}
+{% extends 'blog/base.html' %} {% block content %}
+<div>
+  <h1>Cuong Phan CV</h1>
+
+  <h3>Programmer + Graphic Designer</h3>
+
+  <h2>Work Experiences and Projects</h2>
+</div>
+
+{% for cv in cv_list %}
 <div class="CV">
   <div class="date">
-    {% if user.is_authenticated %} {% endif %}
+    {% if user.is_authenticated %}
+    <a class="btn btn-default" href="{% url 'cv_edit' pk=cv.pk %}"
+      ><span class="glyphicon glyphicon-pencil"></span></a
+    >{% endif %}
   </div>
   <h2>{{ cv.work_title }}</h2>
-  <p>{{ cv.start_end_dates }}</p>
+  <p class="time">{{ cv.start_end_dates }}</p>
   <p>{{ cv.company}}</p>
   <p>{{ cv.experience_desp|linebreaksbr }}</p>
 </div>

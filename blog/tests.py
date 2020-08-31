@@ -15,10 +15,6 @@ class HomePageTest(TestCase):
         found = resolve('/')
         self.assertEqual(found.func, post_list)
 
-    def test_CV_page(self):
-        found = resolve('/')
-        self.assertEqual(found.func, views.LoginView.as_view())
-
     def test_home_page_returns_correct_html(self):
         request = HttpRequest()
         response = post_list(request)

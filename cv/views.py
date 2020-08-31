@@ -23,7 +23,7 @@ def cv_edit(request, pk):
         form = CV_Form(request.POST, instance=cv)
         if form.is_valid():
             cv = form.save()
-            return redirect('cv_page')
+            return redirect('cv_page', pk=cv.pk)
     if not cv:
         raise Http404
     form = CV_Form(instance=cv)
